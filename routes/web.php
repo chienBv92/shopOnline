@@ -11,6 +11,30 @@
 |
 */
 
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('admin.pages.index');
 });
+
+//Route::group(['prefix' => 'admin'], function (){
+//    Route::resource('category', 'CategoryController');
+//});
+
+Route::group(['prefix' => 'admin'], function(){
+    Route::resources([
+        'category' => 'CategoryController',
+        'product' => 'ProductController']);
+});
+//
+//Route::group(['prefix' => 'admin'], function () {
+//    Route::get('posts', 'PostController@index');
+//    Route::get('posts/create', 'PostController@create');
+//    Route::post('posts/store', 'PostController@store');
+//    Route::get('posts/{id}/edit', 'PostController@edit');
+//    Route::get('post/{id}', 'PostController@update');
+//    Route::patch('posts/{id}', 'PostController@update');
+//    Route::patch('posts/{id}', 'PostController@destroy');
+//});
