@@ -33,7 +33,7 @@
                     <tbody>
                     @foreach($category as $key => $value)
                         <tr>
-                            <td>{{$key}}</td>
+                            <td>{{$key+1}}</td>
                             <td>{{$value-> name}}</td>
                             <td>{{$value-> slug}}</td>
                             <td>
@@ -44,9 +44,8 @@
                                 @endif
                             </td>
                             <td>
-                                <button class="btn btn-primary edit" data-id="{{$value->id}}"><i
-                                        class="fa fa-pencil"></i> Chỉnh sửa
-                                </button>
+                                <button class="btn btn-primary edit" data-id="{{$value->id}}">
+                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
                                 <button class="btn btn-danger delete" data-id="{{$value->id}}"><i class="fa fa-trash"
                                                                                                   aria-hidden="true"></i>
                                     Xóa
