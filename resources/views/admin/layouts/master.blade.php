@@ -26,7 +26,7 @@
 <div id="wrapper">
 
     <!-- Sidebar -->
-    @include('admin.layouts.sidebar')
+    @include('admin.layouts.menu')
     <!-- End of Sidebar -->
 
     <!-- Content Wrapper -->
