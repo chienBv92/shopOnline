@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Category;
+//use App\Category;
 use Illuminate\Http\Request;
+use App\Models\Category;
 
 class CategoryController extends Controller
 {
@@ -15,6 +16,9 @@ class CategoryController extends Controller
     public function index()
     {
         //
+        $category = Category::paginate(10);
+        return  view('admin.pages.category.list', ['category' => $category]);
+        //return  view('admin.pages.category.list');
     }
 
     /**
@@ -25,6 +29,8 @@ class CategoryController extends Controller
     public function create()
     {
         //
+
+
     }
 
     /**
