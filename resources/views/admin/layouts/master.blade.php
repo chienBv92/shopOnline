@@ -94,7 +94,7 @@
 
 <!-- Custom scripts for all pages-->
 <script src="assets/admin/js/sb-admin-2.min.js"></script>
-
+<script src="assets/admin/js/ajax.js"></script>
 </body>
 
 </html>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 //use App\Category;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Http\Requests\StoreCategoryRequest;
 
 class CategoryController extends Controller
 {
@@ -28,7 +29,6 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
         return view('admin.pages.category.register');
     }
 
@@ -38,9 +38,28 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreCategoryRequest $request)
     {
-        //
+
+//        Category::create([
+//            'name'=> $request->name,
+//            'slug'=> utf8tourl($request->name),
+//            'status'=> 1
+//        ]);
+
+        Category::create([
+            'name' => $request->name,
+            'slug' => utf8tourl($request->name),
+            'status' => $request->status
+        ]);
+        return redirect()->route('category.index');
+
+//        $category = new Category();
+//        $category->name = $request->name;
+//        $category->slug = utf8tourl($request->name);
+//        $category->status = $request->status;
+//        $category->save();
+        //return redirect()->route('category.index');
     }
 
     /**
@@ -60,9 +79,11 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit($id)
     {
-        //
+        //get category by id
+        $category = Category::find($id);
+        return response()->json($category, 200);
     }
 
     /**
