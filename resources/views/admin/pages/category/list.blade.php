@@ -48,7 +48,6 @@
                                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
                                 <button class="btn btn-danger delete" data-id="{{$value->id}}"><i class="fa fa-trash"
                                                                                                   aria-hidden="true"></i>
-                                    Xóa
                                 </button>
 
                             </td>

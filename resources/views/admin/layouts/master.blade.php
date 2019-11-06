@@ -15,6 +15,7 @@
     <!-- Custom fonts for this template-->
     <link href="assets/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="assets/admin/css/numito.css" rel="stylesheet">
+{{--    <link href="assets/admin/css/font-awesome.css" rel="stylesheet">--}}
     <!-- Custom styles for this template-->
     <link href="assets/admin/css/sb-admin-2.min.css" rel="stylesheet">
 
