@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 //use App\Category;
+use Illuminate\Validation\Validator;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Http\Requests\StoreCategoryRequest;
+use function GuzzleHttp\Promise\all;
 
 class CategoryController extends Controller
 {
@@ -93,9 +95,31 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, $id)
     {
         //
+//        $validator = Validator::make($request->all(),
+//            [
+//                'name' => 'required| min:3|max:255'
+//            ],
+//            [
+//                'required' => ':attribute không được để trống',
+//                'min' => ':attribute tối thiểu 3 kí tự!',
+//                'max' => ':attribute tối đa 255 kí tự!',
+//                'unique' => ':attribute đã tồn tại trong hệ thống'
+//            ]
+//    );
+//        if($validator->fail()){
+//            return response()->json(['error'=> true, 'message' => $validator->error()], 200);
+//        }
+        $category = Category::find($id);
+        $category->update([
+            'name' => $request->name,
+            'slug' => utf8tourl($request->name),
+            'status' => $request->status
+        ]);
+        return response()->json(['success' => 'Update thành công!'], 200);
+
     }
 
     /**
@@ -104,8 +128,11 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy($id)
     {
         //
+        $category = Category::find($id);
+        $category->delete();
+        return response()->json(['success' => 'Xóa thành công!'], 200);
     }
 }
