@@ -18,6 +18,7 @@
 {{--    <link href="assets/admin/css/font-awesome.css" rel="stylesheet">--}}
     <!-- Custom styles for this template-->
     <link href="assets/admin/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="assets/admin/css/toastr.css" rel="stylesheet">
 
 </head>
 
@@ -95,6 +96,8 @@
 <!-- Custom scripts for all pages-->
 <script src="assets/admin/js/sb-admin-2.min.js"></script>
 <script src="assets/admin/js/ajax.js"></script>
+<script src="assets/admin/js/toastr.min.js"></script>
+
 </body>
 
 </html>
