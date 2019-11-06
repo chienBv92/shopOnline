@@ -77,7 +77,8 @@
                     <div class="row" style="margin: 5px">
                         <div class="col-lg-12">
                             <form role="form">
-                                <!-- <input type="hidden" name="id" value=""> -->
+                                <meta name="csrf-token" content="{{ csrf_token() }}">
+                                <input type="hidden" name="id" id="id" value="">
                                 <fieldset class="form-group">
                                     <label>Name</label>
                                     <input class="form-control name" name="name" placeholder="Nhập tên category">
@@ -97,7 +98,7 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-success update">Save</button>
                     <button type="reset" class="btn btn-primary">Làm Lại</button>
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <button class="btn btn-secondary cancel" type="button" data-dismiss="modal">Cancel</button>
                 </div>
             </div>
         </div>
