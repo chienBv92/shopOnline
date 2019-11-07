@@ -101,3 +101,8 @@
 </body>
 
 </html>
+@if(session('thongbao'))
+    <script>
+        toastr.success('{{session('thongbao')}}', 'Thông báo', {timeOut: 5000});
+    </script>
+@endif

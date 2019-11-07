@@ -19,7 +19,7 @@ class CategoryController extends Controller
     public function index()
     {
         //
-        $category = Category::paginate(10);
+        $category = Category::paginate(3);
         return  view('admin.pages.category.list', ['category' => $category]);
         //return  view('admin.pages.category.list');
     }
@@ -97,21 +97,21 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-//        $validator = Validator::make($request->all(),
-//            [
-//                'name' => 'required| min:3|max:255'
-//            ],
-//            [
-//                'required' => ':attribute không được để trống',
-//                'min' => ':attribute tối thiểu 3 kí tự!',
-//                'max' => ':attribute tối đa 255 kí tự!',
-//                'unique' => ':attribute đã tồn tại trong hệ thống'
-//            ]
-//    );
-//        if($validator->fail()){
-//            return response()->json(['error'=> true, 'message' => $validator->error()], 200);
-//        }
+        // Validate data
+        $validator = Validator::make($request->all(),
+            [
+                'name' => 'required| min:3|max:255'
+            ],
+            [
+                'required' => ':attribute không được để trống',
+                'min' => ':attribute tối thiểu 3 kí tự!',
+                'max' => ':attribute tối đa 255 kí tự!',
+                'unique' => ':attribute đã tồn tại trong hệ thống'
+            ]
+    );
+        if($validator->fail()){
+            return response()->json(['error'=> true, 'message' => $validator->error()], 200);
+        }
         $category = Category::find($id);
         $category->update([
             'name' => $request->name,

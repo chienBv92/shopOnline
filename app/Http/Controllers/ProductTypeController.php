@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\ProductType;
+use App\Models\ProductType;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class ProductTypeController extends Controller
@@ -15,6 +16,8 @@ class ProductTypeController extends Controller
     public function index()
     {
         //
+        $productType = ProductType::paginate(3);
+        return  view('admin.pages.product_type.list', ['productType' => $productType]);
     }
 
     /**
@@ -25,6 +28,8 @@ class ProductTypeController extends Controller
     public function create()
     {
         //
+        $categoryList = Category::where('status', 1)->get();
+        return view('admin.pages.product_type.register', ['categoryList' => $categoryList]);
     }
 
     /**
@@ -36,6 +41,28 @@ class ProductTypeController extends Controller
     public function store(Request $request)
     {
         //
+        $data = $request->all();
+        //dd($data);
+        try {
+            $isOk = ProductType::create([
+                'name' => $request->name,
+                'idCategory' => $request->idCategory,
+                'slug' => utf8tourl($request->name),
+                'status' => $request->status
+            ]);
+            //dd($isOk);
+            if ($isOk) {
+                return redirect()->route('productType.index')->with('thongbao' . 'Đã thêm thành công!');
+            } else {
+                return back()->with('thongbao' . 'Có lỗi xảy ra trong quá trình xử lý!');
+            }
+        }catch (\Exception $ex) {
+//            return response()->json([
+//                'error' => 'Có lỗi xảy ra trong quá trình xử lý',
+//            ], 200);
+            return back()->with($ex);
+        }
+
     }
 
     /**
@@ -70,6 +97,7 @@ class ProductTypeController extends Controller
     public function update(Request $request, ProductType $productType)
     {
         //
+        $data = $request->all();
     }
 
     /**

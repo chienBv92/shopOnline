@@ -30,6 +30,7 @@ Route::group(['prefix' => 'admin'], function(){
 
     Route::resources([
         'category' => 'CategoryController',
+        'productType' => 'ProductTypeController',
         'user' => 'UserController',
         'order' => 'OrderController',
         'product' => 'ProductController']);

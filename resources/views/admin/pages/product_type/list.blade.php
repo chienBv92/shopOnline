@@ -1,13 +1,13 @@
 @extends('admin.layouts.master')
 
 @section('title')
-    Danh sách category
+    Danh sách loại sản phẩm
 @endsection
 
 @section('content')
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Danh sách category</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Danh sách loại sản phẩm</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -15,6 +15,7 @@
                     <thead>
                     <tr>
                         <th>STT</th>
+                        <th>Category</th>
                         <th>Name</th>
                         <th>Slug</th>
                         <th>Status</th>
@@ -24,6 +25,7 @@
                     <tfoot>
                     <tr>
                         <th>STT</th>
+                        <th>Category</th>
                         <th>Name</th>
                         <th>Slug</th>
                         <th>Status</th>
@@ -31,9 +33,10 @@
                     </tr>
                     </tfoot>
                     <tbody>
-                    @foreach($category as $key => $value)
+                    @foreach($productType as $key => $value)
                         <tr>
                             <td>{{$key+1}}</td>
+                            <td>{{$value-> idCategory}}</td>
                             <td>{{$value-> name}}</td>
                             <td>{{$value-> slug}}</td>
                             <td>
@@ -55,11 +58,11 @@
                     @endforeach
                     </tbody>
                 </table>
-                <div class="pull-right">{{ $category->links() }}</div>
+                <div class="pull-right">{{ $productType->links() }}</div>
             </div>
         </div>
         <div class="card-header py-3">
-            <a class="link-add col-md-3" href="{{route('category.create')}}">thêm danh mục</a>
+            <a class="link-add col-md-3" href="{{route('productType.create')}}">thêm danh mục</a>
         </div>
     </div>
 

@@ -43,6 +43,20 @@
     </li>
 
     <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProductType"
+           aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fas fa-fw fa fa-bars"></i>
+            <span>Danh mục loại sản phẩm</span>
+        </a>
+        <div id="collapseProductType" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="{{route('productType.index')}}">Danh sách loại sản phẩm</a>
+                <a class="collapse-item" href="{{route('productType.create')}}">Thêm loại sản phẩm</a>
+            </div>
+        </div>
+    </li>
+
+    <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProduct"
            aria-expanded="true" aria-controls="collapseTwo">
             <i class="fa fa-cubes"></i>
